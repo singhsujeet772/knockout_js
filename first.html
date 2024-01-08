@@ -4,8 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Knockout Js</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.5.0/knockout-min.js"></script>
 </head>
 <body>
-    <h1>Hello Knockout</h1>
+    <p>My Name is <span data-bind="text:name"></span></p>
+    <script>
+        function viewModel() {
+            this.name =  ko.observable("John Doe");
+        };
+
+        ko.applyBindings(new viewModel());
+    </script>
 </body>
 </html>
