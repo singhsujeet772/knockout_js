@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Observable Array</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.5.0/knockout-min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+    <ul data-bind="foreach:userArray1">
+        <li data-bind="text: $data"></li>
+    </ul>
+
+    <table>
+        <thead>
+            <tr>
+                <th>FirstName</th>
+                <th>LastName</th>
+            </tr>
+        </thead>
+        <tbody data-bind="foreach: userArray2">
+            <tr>
+                <td data-bind="text: firstName"></td>
+                <td data-bind="text: lastName"></td>
+            </tr>
+        </tbody>
+    </table>
+    <script>
+        var userArray1 = ko.observableArray(['Sam','John','Pam']);
+        var userArray2 =  ko.observableArray([
+            {firstName: 'Sam' , lastName: 'Singh'},
+            {firstName: 'John' , lastName: 'Singh'},
+            {firstName: 'Pam' , lastName: 'Singh'}
+        ]);
+
+        ko.applyBindings();
+        // //Initialize empty array
+        // var myArray = ko.observableArray();
+        // //add item
+        // myArray.push('Some Value');
+        // //First One
+        // myArray()[0];
+        // //The First Key
+        // myArray()[0].property;
+        // //Get Length
+        // myArray().length;
+    </script>
+</body>
+</html>
