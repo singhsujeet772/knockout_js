@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Knockout Js</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.5.0/knockout-min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+    <h1 id ='welcome'>Welcome <span data-bind="text:firstName"></span> <span data-bind="text:lastName"></span></h1>
+    <br>
+    <label for="">First Name : </label>
+    <!-- <input type="text" name="" id="" data-bind="value:firstName,valueUpdate:'afterkeydown'"> -->
+    <input type="text" name="" id="" data-bind="value:firstName">
+    <br>
+    <label for="">Last Name : </label>
+    <!-- <input type="text" name="" id="" data-bind="value:lastName,valueUpdate:'afterkeydown'"> -->
+    <input type="text" name="" id="" data-bind="value:lastName">
+    <br><br>
+    <button id="button">Change</button>
+    <script>
+        const button = document.getElementById('button');
+        const welcome = document.getElementById('welcome');
+
+        var viewModel = {
+            firstName: ko.observable(),
+            lastName: ko.observable()
+        };
+
+        viewModel.firstName.subscribe((newValue)=>{
+            alert('User new name is '+newValue)
+        });
+
+        viewModel.firstName.subscribe((oldValue)=>{
+            alert('User old name was '+oldValue)
+        },null,'beforeChange');
+
+        button.addEventListener('click',()=>{
+            // viewModel.firstName('Sujeet');
+            // viewModel.lastName('Singh');
+            console.log(viewModel.firstName().length);
+        })
+
+        ko.applyBindings(viewModel);
+    </script>
+</body>
+</html>
