@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Observable Array</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.5.0/knockout-min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+    <p data-bind="visible: showMessage">Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus, aliquid. Nulla dicta, culpa doloremque veniam maiores, inventore aliquam exercitationem dignissimos, esse dolores hic reiciendis excepturi veritatis! Assumenda dolor amet labore.</p>
+    <button id="button" data-bind="click: hideMessage">Hide</button>
+    <button id="button" data-bind="click: show1Message">Show</button>
+    <script>
+       var viewModel = ()=>{
+            this.showMessage = ko.observable(true);
+
+            this.hideMessage = ()=>{
+                this.showMessage(false);
+            }
+
+            this.show1Message = ()=>{
+                this.showMessage(true);
+            }
+       };
+
+       ko.applyBindings(viewModel);
+    </script>
+</body>
+</html>

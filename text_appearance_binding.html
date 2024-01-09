@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Observable Array</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.5.0/knockout-min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+    <p>Hello my name is <strong><span data-bind="text:Name"></span></strong> and I am a <strong><span data-bind="text:Profile"></span></strong>.</p>
+    <script>
+       var viewModel = ()=>{
+            this.Name = ko.observable('Sujeet Kumar Singh');
+            this.Profile = ko.observable('Web Developer');
+       };
+
+       ko.applyBindings(viewModel);
+    </script>
+</body>
+</html>
