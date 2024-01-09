@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Observable Array</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.5.0/knockout-min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <style>
+        .highAmount{
+            color: red;
+        }
+        .profitWarning{
+            background-color: yellow;
+        }
+    </style>
+</head>
+<body>
+    <div data-bind="html: htmlString"></div>
+    <div data-bind="css: { highAmount: amount() > 10 }">
+        Amount Information
+     </div>
+    <div data-bind="css: { profitWarning: currentProfit() < 0 }">
+        Profit Information
+     </div>
+     <div data-bind="style: { color: currentProfit() < 0 ? 'red' : 'green' }">
+        Profit Information
+     </div>
+     <a data-bind="attr: { href: url, title: details }">
+        Report
+    </a>
+    
+    <script>
+
+        var viewModel = {
+           htmlString: ko.observable(),
+           amount : ko.observable(9),
+           currentProfit: ko.observable(150000),
+           url: ko.observable("https:www.google.com"),
+            details: ko.observable("Report including final year-end statistics")
+        }
+
+        viewModel.htmlString("<h1>Tis is a html heading</h1><p>This is a <strong>paragraph</strong></p>");
+        viewModel.amount(11);
+        // viewModel.currentProfit(-50);
+
+       ko.applyBindings(viewModel);
+    </script>
+</body>
+</html>

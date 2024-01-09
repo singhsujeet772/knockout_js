@@ -10,19 +10,27 @@
 <body>
     <p data-bind="visible: showMessage">Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus, aliquid. Nulla dicta, culpa doloremque veniam maiores, inventore aliquam exercitationem dignissimos, esse dolores hic reiciendis excepturi veritatis! Assumenda dolor amet labore.</p>
     <button id="button" data-bind="click: hideMessage">Hide</button>
-    <button id="button" data-bind="click: show1Message">Show</button>
+    <button id="button" data-bind="click: showMessage">Show</button>
     <script>
-       var viewModel = ()=>{
-            this.showMessage = ko.observable(true);
+    //    var viewModel = ()=>{
+    //         this.showMessage = ko.observable(true);
 
-            this.hideMessage = ()=>{
-                this.showMessage(false);
-            }
+    //         this.hideMessage = ()=>{
+    //             this.showMessage(false);
+    //         }
 
-            this.show1Message = ()=>{
-                this.showMessage(true);
-            }
-       };
+    //         // this.show1Message = ()=>{
+    //         //     this.showMessage(true);
+    //         // }
+    //    };
+
+        var viewModel = ()=>{
+            showMessage = ko.observable(true);
+        };
+
+        viewModel.hideMessage = ()=>{
+            viewModel.showMessage(false);
+        }
 
        ko.applyBindings(viewModel);
     </script>
