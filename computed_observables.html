@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Observable Array</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.5.0/knockout-min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+    <h1>Full Name is <span data-bind="text:fullName"></span> </h1>
+    <script>
+       //Functions thar are dependent on one or more other observables and will automatically update when the dependencies change.
+       function viewModel(){
+        this.firstName = ko.observable("John");
+        this.lastName = ko.observable("Doe");
+
+        this.fullName = ko.computed(()=>{
+            return this.firstName()+' '+this.lastName();
+        });
+       }
+       ko.applyBindings(viewModel());
+    </script>
+</body>
+</html>
