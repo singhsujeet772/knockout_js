@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Click Binding</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.5.0/knockout-min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+    <ul data-bind="foreach: places">
+        <li>
+            <span data-bind="text: $data"></span>
+            <button data-bind="click: $parent.removePlace">Remove</button>
+        </li>
+    </ul>
+     
+     <script type="text/javascript">
+         function MyViewModel() {
+             var self = this;
+             self.places = ko.observableArray(['London', 'Paris', 'Tokyo']);
+     
+             // The current item will be passed as the first parameter, so we know which place to remove
+             self.removePlace = function(place) {
+                 self.places.remove(place)
+             }
+         }
+         ko.applyBindings(new MyViewModel());
+    </script>
+</body>
+</html>
